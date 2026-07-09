@@ -64,6 +64,40 @@ Use descriptive **kebab-case** names, e.g.:
 3. Save `.png` files in the same lesson folder (user do it)
 4. Create/edit `solution_report.md` referencing them with markdown image syntax (only when user request)
 
-## Lessons 7+
+## Hardhat lessons (bai5_2, bai5_3, bai6_1, bai6_3, bai7_1, bai7_2)
 
-`bai7_1` and `bai7_2` use **Hardhat** for Solidity contracts (separate setup, not TypeScript tests).
+Each lesson has an `ac-hardhat-template/` folder (cloned from `https://github.com/appscyclone/ac-hardhat-template`).
+
+### Setup
+
+```bash
+cd lessons/<name>/ac-hardhat-template
+
+# Fix: --legacy-peer-deps avoids hardhat-toolbox v3 ↔ hardhat-verify v2 conflict
+npm install --legacy-peer-deps
+
+# If missing, install typechain separately
+npm install --legacy-peer-deps --save-dev typechain@^8.3.2
+
+# Create .env (add real private keys for Sepolia deployment)
+copy .env_example .env
+
+# Compile → generates typechain/ (fixes import "../typechain" errors)
+npx hardhat compile
+```
+
+### Commands
+
+| Command | Description |
+|---|---|
+| `npx hardhat test` | Run unit tests (local Hardhat network) |
+| `npx hardhat deploy --network sepolia --tags deploy` | Deploy to Sepolia |
+| `npx hardhat run scripts/test.ts --network sepolia` | Run interaction script |
+| `npx hardhat node` | Run local Hardhat network |
+
+### Notes
+
+- `import { Counter } from "../typechain"` only works **after** `npx hardhat compile`
+- `.env` requires `TESTNET_PRIVATE_KEY` (Sepolia) and `MAINNET_PRIVATE_KEY` (optional)
+- Use `--legacy-peer-deps` for `npm install` to work around peer dependency conflict
+- If you get `.env` validation errors, add placeholder `MAINNET_PRIVATE_KEY=0x0...0`
