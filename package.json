@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Welcome! This repo is designed for final-year students learning blockchain.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "lesson": "npx ts-node run.ts",
     "test": "echo \"Error: no test specified\" && exit 1"

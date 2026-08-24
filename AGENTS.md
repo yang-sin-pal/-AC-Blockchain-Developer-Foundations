@@ -26,9 +26,10 @@ npx ts-node run.ts bai1_1
 |---|---|---|
 | TypeScript | bai1_1, bai2_1 | `problem.md`, `solution.ts` (edit this only), `test.ts` (automated assertions, do NOT edit) |
 | Remix IDE | bai2_3 – bai4_3 | stub `test.ts`; solution = `.sol` file(s) + `solution.md` report (bai4_x use `README.md` instead of `problem.md`) |
-| Hardhat | bai5_2, bai5_3, bai6_1, bai6_3, bai7_1, bai7_2 | stub `test.ts`; all work happens inside `ac-hardhat-template/` |
+| Script + report | bai5_3 | `README.md` spec; turn the stub `test.ts` into a working ethers v6 script against an already-deployed contract (reuses bai5_2's Counter); finish with a `solution.md` report |
+| Hardhat | bai5_2, bai6_1, bai6_3, bai7_1, bai7_2 | stub `test.ts`; all work happens inside `ac-hardhat-template/` |
 
-Only **bai5_2** currently has an `ac-hardhat-template/` folder. For the other Hardhat lessons, clone it from https://github.com/appscyclone/ac-hardhat-template before any work. See `lessons/bai5_2/AGENTS.md` for lesson specifics.
+**bai5_2** and **bai6_1** have an `ac-hardhat-template/` folder; the other Hardhat lessons need it cloned from https://github.com/appscyclone/ac-hardhat-template before any work. See `lessons/bai5_2/AGENTS.md` and `lessons/bai6_1/AGENTS.md` for lesson specifics.
 
 ## Dependencies
 
@@ -66,7 +67,7 @@ Use descriptive **kebab-case** names, e.g.:
 - `call_getGreeting_string.png`
 - `change_getGreeting_address.png`
 
-## Hardhat lessons (bai5_2, bai5_3, bai6_1, bai6_3, bai7_1, bai7_2)
+## Hardhat lessons (bai5_2, bai6_1, bai6_3, bai7_1, bai7_2)
 
 All Hardhat commands run **inside** `lessons/<name>/ac-hardhat-template/` — never from repo root.
 
