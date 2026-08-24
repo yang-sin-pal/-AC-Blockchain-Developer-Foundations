@@ -1,0 +1,123 @@
+{
+  "address": "0xb656c0ce3B333Ad0F9486CfB9Fed2BF4944A3351",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "count",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "increment",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xd96335fe47f10e389be1b8724e18a89d49caa60de337ddcae87f0c0cf78a6a1d",
+  "receipt": {
+    "to": null,
+    "from": "0x09104dDE09702C60772889E1134C54bf75c77e1b",
+    "contractAddress": "0xb656c0ce3B333Ad0F9486CfB9Fed2BF4944A3351",
+    "transactionIndex": 90,
+    "gasUsed": "107419",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xb8ba664a7345a3315d6fc2d10113b4955422bdad07cb50faeec32aa5f7abe1a8",
+    "transactionHash": "0xd96335fe47f10e389be1b8724e18a89d49caa60de337ddcae87f0c0cf78a6a1d",
+    "logs": [],
+    "blockNumber": 11553717,
+    "cumulativeGasUsed": "7459280",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "37ace0739c58d626a0debf51ad657905",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.28+commit.7893614a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"count\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"increment\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Counter.sol\":\"Counter\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[],\"viaIR\":true},\"sources\":{\"contracts/Counter.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.28;\\r\\n\\r\\ncontract Counter {\\r\\n    uint256 public count; //32 bytes -> slot 0\\r\\n    address a; //20 bytes   -> slot 1 (c\\u00f2n d\\u01b0 12 bytes)\\r\\n    uint256 number;//32 bytes -> slot 2 (kh\\u00f4ng nh\\u00e9t v\\u00e0o slot 1 \\u0111\\u01b0\\u1ee3c, chi\\u1ebfm slot ri\\u00eang)\\r\\n    uint8 b; //1 byte -> slot 3 (t\\u1ed5ng 4 slot)\\r\\n\\r\\n    function increment() public {\\r\\n        count += 1;\\r\\n    }\\r\\n\\r\\n    function getCount() public view returns (uint) {\\r\\n        return count;\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0xa4f2f9b2a33db326036baff3692a9b25359c3e8959ed12103a7e1f02e5b184a9\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080806040523460145760fc908161001a8239f35b600080fdfe6080806040526004361015601257600080fd5b60003560e01c90816306661abd1460ad57508063a87d942c1460915763d09de08a14603c57600080fd5b34608c576000366003190112608c5760005460018101809111605d57600055005b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b600080fd5b34608c576000366003190112608c576020600054604051908152f35b34608c576000366003190112608c576020906000548152f3fea2646970667358221220774240d90489979ccf7d9ca8f7120546c0a9e371cbc2e2cad605d81d07b7fe1564736f6c634300081c0033",
+  "deployedBytecode": "0x6080806040526004361015601257600080fd5b60003560e01c90816306661abd1460ad57508063a87d942c1460915763d09de08a14603c57600080fd5b34608c576000366003190112608c5760005460018101809111605d57600055005b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b600080fd5b34608c576000366003190112608c576020600054604051908152f35b34608c576000366003190112608c576020906000548152f3fea2646970667358221220774240d90489979ccf7d9ca8f7120546c0a9e371cbc2e2cad605d81d07b7fe1564736f6c634300081c0033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 3,
+        "contract": "contracts/Counter.sol:Counter",
+        "label": "count",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 5,
+        "contract": "contracts/Counter.sol:Counter",
+        "label": "a",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 7,
+        "contract": "contracts/Counter.sol:Counter",
+        "label": "number",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9,
+        "contract": "contracts/Counter.sol:Counter",
+        "label": "b",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint8"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}
