@@ -100,6 +100,7 @@ npx hardhat compile
 ### Notes
 
 - Fresh template clones ship dead BlastAPI RPC URLs and a placeholder dev key: replace `networks.sepolia.url` (e.g. `https://ethereum-sepolia-rpc.publicnode.com`) and set a funded real `TESTNET_PRIVATE_KEY` before deploying
+- Lesson-level `test.ts` scripts can also embed dead BlastAPI RPCs (verified in bai5_3) or placeholder ABIs/addresses (bai6_1, bai6_3 ship empty-ABI stubs) — fix before running
 - Order matters: run `npx hardhat compile` before tests/scripts whenever contracts changed or typechain is missing; compile also re-exports ABIs to `data/abi/`
 - Deploys use hardhat-deploy (`deploy/*.ts`, tag `deploy`, named account `deployer` = account index 0)
 - `.env_example` has no `MAINNET_PRIVATE_KEY`, but `hardhat.config.ts` reads it — if you get `.env` validation errors, add placeholder `MAINNET_PRIVATE_KEY=0x0...0`
