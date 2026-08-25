@@ -1,6 +1,6 @@
-# Bài 4.3 – Báo cáo
+# Lesson 4.3 – Report
 
-#### 1. Deploy Voting Contract
+#### 1. Deploy the Voting Contract
 ![Deploy](solution_images/1_Deploy_Voting.png)
 
 #### 2. Verify Owner is Account1

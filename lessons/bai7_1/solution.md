@@ -1,6 +1,6 @@
-# Bài 7.1 – Báo cáo
+# Exercise 7.1 – Report
 
-#### 1. Viết contract `MyMintableToken.sol` — ERC20 kế thừa OpenZeppelin v5, tên "MyMintableToken", symbol "MMT", hàm `mint(address to, uint256 amount)` chỉ owner gọi được, dùng `_mint`, không phát hành token ban đầu trong constructor
+#### 1. Write the `MyMintableToken.sol` contract — ERC20 inheriting OpenZeppelin v5, named "MyMintableToken", symbol "MMT", with a `mint(address to, uint256 amount)` function restricted to the owner only, using `_mint`, and no initial token supply in the constructor
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -18,36 +18,36 @@ contract MyMintableToken is ERC20, Ownable {
 }
 ```
 
-#### 2. Viết script deploy (`deploy/04-mymintabletoken.ts`, tag `mmt`) và triển khai lên Sepolia
+#### 2. Write the deploy script (`deploy/04-mymintabletoken.ts`, tag `mmt`) and deploy to Sepolia
 
-Script theo spec: deploy contract → mint 1000 MMT cho deployer → in balance của deployer (cả định dạng MMT lẫn wei). Chạy lệnh `npx hardhat deploy --network sepolia --tags mmt`:
+The script follows the spec: deploy contract → mint 1000 MMT to the deployer → print the deployer's balance (in both MMT and wei formats). Run `npx hardhat deploy --network sepolia --tags mmt`:
 
-![Deploy MyMintableToken lên Sepolia](solution_images/1_deploy.png)
+![Deploy MyMintableToken to Sepolia](solution_images/1_deploy.png)
 
-- Địa chỉ contract: [`0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82`](https://sepolia.etherscan.io/address/0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82)
-- Deploy mới hoàn toàn — mint thành công 1000.0 MMT cho deployer và in ra `balanceOf`
+- Contract address: [`0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82`](https://sepolia.etherscan.io/address/0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82)
+- Fully fresh deployment — successfully minted 1000.0 MMT to the deployer and printed `balanceOf`
 
-#### 3. Chạy script tương tác `scripts/mmt.ts` bằng tài khoản owner
+#### 3. Run the interaction script `scripts/mmt.ts` using the owner account
 
-Script mint thêm 100 MMT cho deployer rồi in số dư trước/sau. Chạy `npx hardhat run scripts/mmt.ts --network sepolia` với key thường:
+The script mints an additional 100 MMT to the deployer and prints the balance before and after. Run `npx hardhat run scripts/mmt.ts --network sepolia` with the regular key:
 
-![Chạy script với owner](solution_images/2_run_script_owner.png)
+![Run script with owner](solution_images/2_run_script_owner.png)
 
-- Kết quả: `balanceOf: 1000.0 -> 1100.0 MMT` — mint thành công vì `msg.sender` là owner
+- Result: `balanceOf: 1000.0 -> 1100.0 MMT` — mint succeeded because `msg.sender` is the owner
 
-#### 4. Chạy lại script bằng một tài khoản không phải owner
+#### 4. Run the script again with a non-owner account
 
-Dùng account khác trong Metamase, nạp Sepolia ETH từ faucet trước, rồi chạy script trong một cửa sổ PowerShell với biến môi trường phiên (ghi đè `.env`, không cần sửa file nào):
+Use a different account in MetaMask, fund it with Sepolia ETH from a faucet, then run the script in a PowerShell window with a session-scoped environment variable (overriding `.env` without editing any file):
 
 ```powershell
 $env:TESTNET_PRIVATE_KEY = "<Account2 private key>"
 npx hardhat run scripts/mmt.ts --network sepolia
 ```
 
-![Chạy script với non-owner](solution_images/3_run_script_NonOwner.png)
+![Run script with non-owner](solution_images/3_run_script_NonOwner.png)
 
-- Giao dịch bị revert với custom error `OwnableUnauthorizedAccount(<địa chỉ burner>)` — chứng minh trực tiếp trên testnet rằng modifier `onlyOwner` hoạt động đúng
+- The transaction reverts with custom error `OwnableUnauthorizedAccount(<burner address>)` — directly demonstrating on testnet that the `onlyOwner` modifier works correctly
 
 ---
 
-Ghi chú: contract chưa được verify trên Etherscan — việc verify thủ công (Standard JSON Input từ `solcInputs/999f835e6a53cc806b1cec02f4c86694.json`) cùng với việc gọi trực tiếp hàm `mint` trên Etherscan bằng cả owner lẫn non-owner sẽ được thực hiện ở **bài 7.2**.
+Note: the contract has not been verified on Etherscan — manual verification (Standard JSON Input from `solcInputs/999f835e6a53cc806b1cec02f4c86694.json`) along with calling the `mint` function directly on Etherscan with both owner and non-owner will be performed in **Exercise 7.2**.

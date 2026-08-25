@@ -1,23 +1,23 @@
-# Bài 3.1 – Kiểu dữ liệu và biến Solidity
+# Lesson 3.1 – Solidity Data Types and Variables
 
-## 🎯 Mục tiêu
-- Thực hành khai báo biến trong Solidity
-- Sử dụng kiểu dữ liệu: string, uint
-- Biết cách viết hàm cập nhật state variable
+## 🎯 Objectives
+- Practice declaring variables in Solidity
+- Use data types: string, uint
+- Learn how to write a function that updates a state variable
 
-## 📄 Đề bài
-Viết một smart contract tên `Profile`:
-- Biến `name` (kiểu `string`) khai báo `public`
-- Biến `age` (kiểu `uint`) khai báo `public`
-- Hàm `setProfile(string _name, uint _age)` cập nhật name và age
+## 📄 Problem
+Write a smart contract named `Profile`:
+- Variable `name` (type `string`) declared as `public`
+- Variable `age` (type `uint`) declared as `public`
+- Function `setProfile(string _name, uint _age)` updates name and age
 
-Sau đó:
-1. Deploy contract trên Remix IDE
-2. Gọi `setProfile("Alice", 21)`
-3. Gọi hàm `name()` và `age()` để kiểm tra kết quả
+Then:
+1. Deploy the contract on Remix IDE
+2. Call `setProfile("Alice", 21)`
+3. Call `name()` and `age()` to verify the results
 
-## 🛠 Triển khai
-- Mở https://remix.ethereum.org
-- Tạo file `Profile.sol`, dán code vào
-- Compile và Deploy
-- Test các hàm trong Remix IDE
+## 🛠 Implementation
+- Open https://remix.ethereum.org
+- Create a file `Profile.sol`, paste the code in
+- Compile and Deploy
+- Test the functions in Remix IDE

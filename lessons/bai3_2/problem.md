@@ -1,20 +1,20 @@
-# Bài 3.2 – Hàm, Control Flow và Visibility
+# Lesson 3.2 – Functions, Control Flow, and Visibility
 
-## 🎯 Mục tiêu
-- Luyện tập định nghĩa hàm Solidity.
-- Sử dụng require, if/else, return, visibility.
-- Hiểu cách validate dữ liệu trong smart contract.
+## 🎯 Objectives
+- Practice defining Solidity functions.
+- Use require, if/else, return, visibility.
+- Understand how to validate data in a smart contract.
 
-## 📄 Đề bài
-Viết một smart contract tên `VotingEligibility`:
-- Biến `minAge` kiểu uint, giá trị khởi tạo = 18.
-- Hàm `checkEligibility(uint age)` trả về true/false:
-  - Nếu `age >= minAge` → trả về true.
-  - Ngược lại → trả về false.
-- Hàm `updateMinAge(uint newMinAge)`:
-  - Chỉ cho phép người deploy gọi được (sử dụng require với `msg.sender`).
-  - Cập nhật lại `minAge`.
+## 📄 Problem
+Write a smart contract named `VotingEligibility`:
+- Variable `minAge` of type uint, initialized to 18.
+- Function `checkEligibility(uint age)` returns true/false:
+  - If `age >= minAge` → return true.
+  - Otherwise → return false.
+- Function `updateMinAge(uint newMinAge)`:
+  - Only the deployer can call it (use require with `msg.sender`).
+  - Update `minAge`.
 
-## 💻 Cách chạy
-- Dán vào Remix IDE: https://remix.ethereum.org
-- Deploy, test `checkEligibility()` và `updateMinAge()`
+## 💻 How to Run
+- Paste into Remix IDE: https://remix.ethereum.org
+- Deploy, then test `checkEligibility()` and `updateMinAge()`

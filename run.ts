@@ -5,7 +5,7 @@
 const args = process.argv.slice(2);
 if (args.length === 0) {
     console.log("❗ Vui lòng truyền tên bài học. Ví dụ:");
-    console.log("   npx ts-node run.ts bai1_1");
+    console.log("   npx tsx run.ts bai1_1");
     process.exit(1);
 }
 

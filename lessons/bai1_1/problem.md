@@ -1,7 +1,7 @@
-# Bài 1.1 – Kiểm tra tính hợp lệ của Block (Blockchain cơ bản)
+# Lesson 1.1 – Block Validity Check (Blockchain Basics)
 
-## Mô tả
-Bạn được cung cấp một object dạng block:
+## Description
+You are provided with a block-shaped object:
 
 ```ts
 {
@@ -13,10 +13,10 @@ Bạn được cung cấp một object dạng block:
 }
 ```
 
-Viết hàm `isValidBlock(block)` để kiểm tra:
-- current_hash phải đúng bằng hash SHA256 của index + timestamp + transactions + previous_hash
+Write a function `isValidBlock(block)` that checks:
+- `current_hash` must exactly equal the SHA256 hash of `index + timestamp + transactions + previous_hash`
 
-## Ví dụ chạy
+## Example Run
 ```ts
-console.log(isValidBlock(block)); // true hoặc false
+console.log(isValidBlock(block)); // true or false
 ```

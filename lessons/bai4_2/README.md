@@ -1,14 +1,14 @@
-# Bài 4.2 – Modifier, Event và Quyền Truy Cập
+# Lesson 4.2 – Modifier, Event, and Access Control
 
-## 🎯 Mục tiêu
-- Thực hành viết modifier giới hạn quyền owner.
-- Ghi log bằng event khi thêm dữ liệu.
+## 🎯 Objectives
+- Practice writing a modifier to restrict owner permissions.
+- Log events when adding data.
 
-## 📄 Đề bài
-Viết một smart contract `StudentRegistryV2` mở rộng từ bài 4.1:
-- Chỉ owner (người deploy contract) được phép thêm sinh viên.
-- Khi thêm sinh viên thành công sẽ emit event.
+## 📄 Problem
+Write a smart contract `StudentRegistryV2` extending lesson 4.1:
+- Only the owner (the contract deployer) is allowed to add students.
+- When a student is added successfully, emit an event.
 
-## 💻 Cách chạy
-- Dán code vào Remix IDE: https://remix.ethereum.org
-- Deploy → Test `registerStudent()`, kiểm tra event log và kết quả đọc student.
+## 💻 How to Run
+- Paste the code into Remix IDE: https://remix.ethereum.org
+- Deploy → Test `registerStudent()`, check the event log and the student read result.

@@ -1,4 +1,4 @@
-﻿# Bài 5.2 – Báo cáo
+﻿# Lesson 5.2 – Report
 
 > - **Account (deployer):** [`0x09104dDE09702C60772889E1134C54bf75c77e1b`](https://sepolia.etherscan.io/address/0x09104dDE09702C60772889E1134C54bf75c77e1b)
 > - **Contract:** [`0xb656c0ce3B333Ad0F9486CfB9Fed2BF4944A3351`](https://sepolia.etherscan.io/address/0xb656c0ce3B333Ad0F9486CfB9Fed2BF4944A3351)

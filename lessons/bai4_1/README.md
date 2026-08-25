@@ -1,18 +1,18 @@
-# Bài 4.1 – Mapping, Struct, Array
+# Lesson 4.1 – Mapping, Struct, Array
 
-## 🎯 Mục tiêu
-- Thực hành lưu trữ dữ liệu bằng struct, mapping.
-- Biết cách thêm, đọc, kiểm tra dữ liệu trong smart contract.
+## 🎯 Objectives
+- Practice storing data using struct and mapping.
+- Learn how to add, read, and check data in a smart contract.
 
-## 📄 Đề bài
-Viết một smart contract tên `StudentRegistry`:
-- Tạo struct `Student` gồm: `name (string)`, `age (uint)`, `isRegistered (bool)`
-- Dùng `mapping(address => Student)` để lưu thông tin từng người theo địa chỉ ví.
-- Hàm `register(string name, uint age)` cho phép caller đăng ký bản thân.
-- Hàm `getStudent(address user)` trả về thông tin student.
-- Hàm `isStudentRegistered(address user)` trả về true/false nếu student đã đăng ký.
+## 📄 Problem
+Write a smart contract named `StudentRegistry`:
+- Create a `Student` struct containing: `name (string)`, `age (uint)`, `isRegistered (bool)`
+- Use `mapping(address => Student)` to store each person's information by wallet address.
+- The `register(string name, uint age)` function allows the caller to register themselves.
+- The `getStudent(address user)` function returns the student's information.
+- The `isStudentRegistered(address user)` function returns true/false indicating whether the student has registered.
 
-## 💻 Cách chạy
-- Dán code vào Remix IDE: https://remix.ethereum.org
-- Deploy, test lần lượt các hàm.
-- Thử gọi `register()`, `getStudent()` và `isStudentRegistered()`.
+## 💻 How to Run
+- Paste the code into Remix IDE: https://remix.ethereum.org
+- Deploy, then test each function sequentially.
+- Try calling `register()`, `getStudent()` and `isStudentRegistered()`.

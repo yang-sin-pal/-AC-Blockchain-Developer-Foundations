@@ -69,7 +69,9 @@ Use descriptive **kebab-case** names, e.g.:
 
 ## Hardhat lessons (bai5_2, bai6_1, bai6_3, bai7_1, bai7_2)
 
-All Hardhat commands run **inside** repo-root `ac-hardhat-template/`. Contracts, tests, deploy-scripts and interaction scripts **accumulate** there per lesson (currently Counter + MyToken + MyNFT). The template is fully installed — `.env` holds the funded Sepolia key, all configured RPCs are PublicNode.
+Template-level facts — deployment registry with live addresses, toolchain pins/quirks, install rule — live in `ac-hardhat-template/AGENTS.md`.
+
+All Hardhat commands run **inside** repo-root `ac-hardhat-template/`. Contracts, tests, deploy-scripts and interaction scripts **accumulate** there per lesson (currently Counter + MyToken + MyNFT + MyMintableToken). The template is fully installed — `.env` holds the funded Sepolia key, all configured RPCs are PublicNode.
 
 Only rebuild after adding/changing files:
 

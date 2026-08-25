@@ -1,4 +1,4 @@
-import { isValidBlock, Block } from "./solution";
+import { isValidBlock, Block } from "./solution.js";
 import crypto from "crypto";
 
 function calculateHash(index: number, timestamp: string, transactions: any[], previous_hash: string): string {

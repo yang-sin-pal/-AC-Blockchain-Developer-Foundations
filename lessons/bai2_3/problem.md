@@ -1,22 +1,22 @@
-# Bài 2.2 – Viết hàm Solidity đơn giản
+# Lesson 2.2 – Writing a Simple Solidity Function
 
-## 🎯 Mục tiêu
-- Làm quen với cú pháp Solidity cơ bản.
-- Viết một smart contract đơn giản có biến và hàm.
-- Deploy và test trên Remix IDE.
+## 🎯 Objectives
+- Get familiar with basic Solidity syntax.
+- Write a simple smart contract with variables and functions.
+- Deploy and test it on Remix IDE.
 
-## 📄 Đề bài
-Viết một smart contract tên là `Welcome`:
-- Biến `greeting` dạng `string`, khai báo `public`.
-- Constructor truyền vào giá trị khởi tạo cho `greeting`.
-- Hàm `getGreeting()` trả về `greeting`.
+## 📄 Problem Statement
+Write a smart contract named `Welcome`:
+- A `string` variable `greeting`, declared as `public`.
+- A constructor that takes an initial value for `greeting`.
+- A `getGreeting()` function that returns `greeting`.
 
-Sau đó:
-1. Deploy contract trên Remix IDE.
-2. Gọi hàm `getGreeting()` và chụp màn hình kết quả.
-3. (Tuỳ chọn) Sửa hàm để trả thêm địa chỉ người deploy (msg.sender).
+Then:
+1. Deploy the contract on Remix IDE.
+2. Call the `getGreeting()` function and take a screenshot of the result.
+3. (Optional) Modify the function to also return the deployer's address (`msg.sender`).
 
-## 💡 Gợi ý triển khai
-- Dán vào Remix tại: https://remix.ethereum.org
-- Chọn compiler 0.8.x
-- Deploy contract bằng injected hoặc environment VM
+## 💡 Implementation Hints
+- Paste into Remix at: https://remix.ethereum.org
+- Select compiler 0.8.x
+- Deploy the contract using the injected provider or the VM environment

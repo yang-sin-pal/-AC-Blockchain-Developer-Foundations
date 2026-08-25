@@ -1,19 +1,19 @@
-# Bài Tập 5.3 – Giao tiếp với smart contract qua ABI
+# Exercise 5.3 – Interacting with a Smart Contract via ABI
 
-🎯 Mục tiêu:
-- Hiểu và sử dụng ABI để gọi hàm smart contract.
-- Kết nối tới contract đã deploy sẵn và gọi hàm đọc.
+🎯 Objectives:
+- Understand and use ABI to call smart contract functions.
+- Connect to an already-deployed contract and call a read function.
 
 ---
 
-## ✅ Yêu cầu
+## ✅ Requirements
 
-Giả sử có một contract `Counter` đã được deploy tại địa chỉ sau:
+Assume there is a `Counter` contract deployed at the following address:
 ```
 Contract Address: 0x1234567890abcdef1234567890abcdef12345678
 ```
 
-Và ABI như sau:
+And the following ABI:
 ```ts
 [
   "function getCount() public view returns (uint)",
@@ -21,24 +21,24 @@ Và ABI như sau:
 ]
 ```
 
-Viết đoạn script dùng ethers.js để:
-1. Kết nối tới contract (dùng địa chỉ + ABI trên)
-2. Gọi `getCount()` và in ra kết quả
+Write a script using ethers.js to:
+1. Connect to the contract (using the address and ABI above)
+2. Call `getCount()` and print the result
 
 ---
 
-## 💡 Gợi ý
+## 💡 Hints
 
-- Dùng `new ethers.Contract(address, abi, providerOrSigner)`
-- Nếu chỉ đọc (call view function) thì chỉ cần `provider`
-- Gọi: `await contract.getCount()`
+- Use `new ethers.Contract(address, abi, providerOrSigner)`
+- For read-only calls (view functions), only a `provider` is needed
+- Call: `await contract.getCount()`
 
 ---
 
-## 🧪 Chạy lệnh
+## 🧪 Run the command
 
 ```bash
 npx ts-node test.ts
 ```
 
-✅ Nếu hiển thị được số đếm hiện tại → bạn đã hiểu đúng cách frontend dùng ABI để tương tác contract!
+✅ If the current count is displayed, you have correctly understood how a frontend uses an ABI to interact with a contract!

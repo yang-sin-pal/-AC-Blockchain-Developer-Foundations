@@ -1,38 +1,38 @@
-# Bài Tập 6.3 – Mint NFT bằng Hardhat
+# Exercise 6.3 – Mint an NFT with Hardhat
 
-🎯 Mục tiêu:
+🎯 Objective:
 
-- Viết, deploy và mint NFT ERC721 bằng Hardhat.
-
----
-
-## ✅ Yêu cầu
-
-1. Viết contract `MyNFT`:
-
-   - Kế thừa từ ERC721
-   - Biến `nextTokenId`
-   - Hàm `mint(address to)` chỉ owner gọi được
-   - Mỗi lần mint tăng `nextTokenId`
-2. Viết script deploy:
-
-   - Deploy contract
-   - Mint 1 NFT cho deployer
-   - In `ownerOf(0)`
+- Write, deploy, and mint an ERC721 NFT using Hardhat.
 
 ---
 
-## 💡 Gợi ý
+## ✅ Requirements
 
-- Dùng `_safeMint(to, nextTokenId)` để mint NFT
-- Hàm `ownerOf()` trả về địa chỉ chủ sở hữu
+1. Write the `MyNFT` contract:
+
+   - Inherit from ERC721
+   - Include a `nextTokenId` variable
+   - Add a `mint(address to)` function callable only by the owner
+   - Increment `nextTokenId` with each mint
+2. Write a deploy script:
+
+   - Deploy the contract
+   - Mint 1 NFT to the deployer
+   - Print `ownerOf(0)`
 
 ---
 
-## 🧪 Chạy lệnh
+## 💡 Hints
+
+- Use `_safeMint(to, nextTokenId)` to mint the NFT
+- The `ownerOf()` function returns the owner's address
+
+---
+
+## 🧪 Run the command
 
 ```bash
 npx hardhat deploy --network sepolia --tags deploy
 ```
 
-Sau khi deploy, chạy file test.ts để mint một NFT và trả về địa chỉ sở hữu.
+After deploying, run the `test.ts` file to mint one NFT and return its owner address.

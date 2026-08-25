@@ -1,6 +1,6 @@
-﻿# Bài 6.3 – Báo cáo
+﻿# Lesson 6.3 – Report
 
-#### 1. Viết contract `MyNFT.sol` — ERC721 kế thừa OpenZeppelin v5, tên "MyNFT", symbol "MNFT", hàm `mint(address)` chỉ owner gọi được, dùng `_safeMint` với id tăng dần qua biến `nextTokenId`
+#### 1. Write the `MyNFT.sol` contract — ERC721 inheriting from OpenZeppelin v5, name "MyNFT", symbol "MNFT", `mint(address)` callable only by the owner, using `_safeMint` with incrementing id via `nextTokenId`
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -21,28 +21,28 @@ contract MyNFT is ERC721, Ownable {
 }
 ```
 
-#### 2. Viết unit test và build lại template
+#### 2. Write unit tests and rebuild the template
 
-Thêm `test/MyNFT.test.ts` gồm 6 test: name/symbol đúng, `nextTokenId` khởi tạo bằng 0, mint xong `ownerOf(0)` trả về deployer, `nextTokenId` tăng sau mỗi lần mint, non-owner mint bị revert với custom error `OwnableUnauthorizedAccount`. Chạy `npx hardhat clean && npx hardhat compile && npx hardhat test` — tổng cộng **13 passing** (2 Counter + 5 MyToken + 6 MyNFT).
+Add `test/MyNFT.test.ts` with 6 tests: name/symbol correct, `nextTokenId` initialized to 0, after minting `ownerOf(0)` returns the deployer, `nextTokenId` increments after each mint, non-owner mint reverts with custom error `OwnableUnauthorizedAccount`. Run `npx hardhat clean && npx hardhat compile && npx hardhat test` — **13 passing** total (2 Counter + 5 MyToken + 6 MyNFT).
 
-Hai lỗi build đã xử lý trên đường đi:
+Two build errors were resolved along the way:
 
-- Hardhat 2 mặc định dịch EVM target `paris`, khiến OpenZeppelin 5.x dùng opcode `mcopy` (Cancun) bị lỗi compile → pin `evmVersion: "cancun"` trong `hardhat.config.ts`
-- `@nomicfoundation/hardhat-chai-matchers` v1 khai báo peer ethers ^5, sai với ethers v6 của template → nâng lên `^2.0.0` và import matcher trong file test để dùng `revertedWithCustomError`
+- Hardhat 2 defaults to the `paris` EVM target, which causes OpenZeppelin 5.x (using the `mcopy` opcode from Cancun) to fail at compile time → pin `evmVersion: "cancun"` in `hardhat.config.ts`
+- `@nomicfoundation/hardhat-chai-matchers` v1 declares peer ethers ^5, which conflicts with the ethers v6 used in the template → upgrade to `^2.0.0` and import the matcher in the test file to use `revertedWithCustomError`
 
-#### 3. Viết script deploy (`deploy/03-nft.ts`, tag `nft`) và triển khai lên Sepolia
+#### 3. Write the deploy script (`deploy/03-nft.ts`, tag `nft`) and deploy to Sepolia
 
-Script theo spec: deploy contract → mint token #0 cho deployer → in `ownerOf(0)`. Chạy lệnh `npx hardhat deploy --network sepolia --tags nft`:
+The script follows the spec: deploy contract → mint token #0 to the deployer → print `ownerOf(0)`. Run the command `npx hardhat deploy --network sepolia --tags nft`:
 
-![Deploy MyNFT lên Sepolia bằng hardhat-deploy](solution_images/1_deploy_nft_mint_to_deployer.png)
+![Deploying MyNFT to Sepolia with hardhat-deploy](solution_images/1_deploy_nft_mint_to_deployer.png)
 
-- Địa chỉ contract: [`0xDfee82bf1967A3110B7430B749a82ab2cFe9A960`](https://sepolia.etherscan.io/address/0xDfee82bf1967A3110B7430B749a82ab2cFe9A960)
-- Lần chạy đầu deploy lên mạng thành công nhưng script văng lỗi ngay sau đó: `getNamedAccounts()` trả về địa chỉ dạng **string** nên `.address` là `undefined` → sửa thành truyền thẳng `deployer` vào `mint()`
-- Lần chạy thứ hai hardhat-deploy in `reusing "MyNFT" …`: hardhat-deploy 1.x so sánh transaction deploy gốc với transaction sắp gửi — bytecode + constructor args không đổi ⇒ tái sử dụng địa chỉ cũ bất kể `skipIfAlreadyDeployed: false`. Do contract được reuse, token #0 thuộc về một địa chỉ random từ lần chạy script cũ (`0x9C7e…5Af1`, private key đã bỏ), token #1 mới thuộc về deployer
-- Source code đã được verify trên Etherscan (Etherscan tự động khớp bytecode Exact/Similar Match với bản đã verify)
+- Contract address: [`0xDfee82bf1967A3110B7430B749a82ab2cFe9A960`](https://sepolia.etherscan.io/address/0xDfee82bf1967A3110B7430B749a82ab2cFe9A960)
+- The first run deployed to the network successfully but the script threw an error afterward: `getNamedAccounts()` returns addresses as **strings**, so `.address` was `undefined` → fixed by passing `deployer` directly into `mint()`
+- On the second run hardhat-deploy printed `reusing "MyNFT" …`: hardhat-deploy 1.x compares the original deploy transaction with the one about to be sent — bytecode + constructor args are unchanged ⇒ it reuses the old address regardless of `skipIfAlreadyDeployed: false`. Because the contract was reused, token #0 belongs to a random address from the previous script run (`0x9C7e…5Af1`, whose private key was discarded), and token #1 is the one that belongs to the deployer
+- Source code was verified on Etherscan (Etherscan automatically matched the bytecode as an Exact/Similar Match against the previously verified version)
 
-#### 4. Hoàn thiện `test.ts` của bài và chạy `npm run lesson bai6_3`
+#### 4. Complete the lesson's `test.ts` and run `npm run lesson bai6_3`
 
-File test dùng ethers v6 + RPC PublicNode, ABI ERC721 tối thiểu (`name`, `symbol`, `nextTokenId`, `mint`, `ownerOf`), ví ký giao dịch lấy từ `$env:TESTNET_PRIVATE_KEY`; đọc thông tin contract, mint một NFT cho wallet rồi in chủ sở hữu. Chạy 2 lần liên tiếp — `nextTokenId` tăng đều qua từng lần chạy:
+The test file uses ethers v6 + RPC PublicNode, a minimal ERC721 ABI (`name`, `symbol`, `nextTokenId`, `mint`, `ownerOf`), and the signing wallet is loaded from `$env:TESTNET_PRIVATE_KEY`; it reads the contract info, mints one NFT to the wallet, and prints the owner. Run twice consecutively — `nextTokenId` increments across each run:
 
-![Chạy npm run lesson bai6_3 hai lần, nextTokenId tăng dần](solution_images/2_npm_run_lesson_bai6_3_two_times_nextTokenID_increase.png)
+![Running npm run lesson bai6_3 twice, nextTokenId increments](solution_images/2_npm_run_lesson_bai6_3_two_times_nextTokenID_increase.png)

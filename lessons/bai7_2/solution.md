@@ -1,50 +1,50 @@
-# Bài 7.2 – Báo cáo
+# Exercise 7.2 – Report
 
-#### 1. Bối cảnh — contract `MyMintableToken` đã được deploy ở bài 7.1
+#### 1. Background — the `MyMintableToken` contract was deployed in Exercise 7.1
 
-- Địa chỉ: [`0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82`](https://sepolia.etherscan.io/address/0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82)
-- Plugin `@nomicfoundation/hardhat-verify` và cấu hình `etherscan.apiKey` (đọc từ biến môi trường `ETHERSCAN_API`) có sẵn trong `ac-hardhat-template/hardhat.config.ts`, nên Bước 1–3 của đề không phải làm lại
+- Address: [`0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82`](https://sepolia.etherscan.io/address/0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82)
+- The `@nomicfoundation/hardhat-verify` plugin and `etherscan.apiKey` configuration (read from the `ETHERSCAN_API` environment variable) are already present in `ac-hardhat-template/hardhat.config.ts`, so Steps 1–3 of the assignment do not need to be redone
 
-#### 2. Vì sao không chạy `npx hardhat verify` như Bước 4 của đề
+#### 2. Why `npx hardhat verify` (Step 4 of the assignment) cannot be run
 
-Toolchain Hardhat 2 đóng băng `hardhat-verify` ở dòng 2.x, trong khi Etherscan đã nghỉ hưu API V1 (tháng 5/2025) — thứ mà dòng CLI này vẫn gọi — nên lệnh verify chết sẵn trên toolchain này. Luồng thay thế: nộp thủ công Standard JSON Input từ `deployments/sepolia/solcInputs/999f835e6a53cc806b1cec02f4c86694.json` qua giao diện web.
+The Hardhat 2 toolchain pins `hardhat-verify` to the 2.x line, while Etherscan retired API V1 (May 2025) — the very API this CLI still calls — so the verify command is effectively dead on this toolchain. The alternative workflow: manually submit Standard JSON Input from `deployments/sepolia/solcInputs/999f835e6a53cc806b1cec02f4c86694.json` through the web interface.
 
-#### 3. Etherscan tự động xác thực contract — Similar Match
+#### 3. Etherscan automatically verified the contract — Similar Match
 
-Trước cả khi kịp verify tay, Etherscan đã tự động khớp bytecode của contract với một deployment đã verify trước đó (**Similar Match** — cơ chế so khớp bỏ qua constructor args). Nhờ đó source code hiển thị công khai và hai tab Read/Write Contract mở sẵn:
+Before manual verification could even be attempted, Etherscan automatically matched the contract's bytecode against a previously verified deployment (**Similar Match** — a mechanism that matches bytecode while ignoring constructor args). As a result, the source code is publicly displayed and both the Read/Write Contract tabs are enabled:
 
-![Contract tự động được xác thực nhờ Similar Match](solution_images/1_the_contrat_autoverified_by_similar_contract.png)
+![Contract automatically verified via Similar Match](solution_images/1_the_contrat_autoverified_by_similar_contract.png)
 
-#### 4. Đọc dữ liệu qua tab Read Contract
+#### 4. Reading data via the Read Contract tab
 
-Gọi `balanceOf(owner)` trên tab Read Contract để xem số dư hiện tại của chủ sở hữu:
+Called `balanceOf(owner)` on the Read Contract tab to view the owner's current balance:
 
-![Xem balanceOf của owner bằng Read Contract](solution_images/2_view_balanceOf_owner_with_readContract.png)
+![View owner's balanceOf via Read Contract](solution_images/2_view_balanceOf_owner_with_readContract.png)
 
-#### 5. Gọi `mint` bằng owner qua tab Write Contract — thành công
+#### 5. Calling `mint` as owner via the Write Contract tab — succeeded
 
-Kết nối ví owner (deployer) rồi gọi `mint(to, amount)`:
+Connected the owner (deployer) wallet and called `mint(to, amount)`:
 
-![Mint thành công bằng owner](solution_images/3_perform_mint_Owner.png)
+![Successful mint as owner](solution_images/3_perform_mint_Owner.png)
 
-Kiểm tra lại balance — số dư tăng đúng bằng lượng vừa mint:
+Checked the balance again — it increased by exactly the amount just minted:
 
-![Kiểm tra balance sau khi mint](solution_images/4_check_balance_again.png)
+![Balance check after minting](solution_images/4_check_balance_again.png)
 
-→ Modifier `onlyOwner` cho phép owner gọi `mint` bình thường.
+→ The `onlyOwner` modifier allows the owner to call `mint` normally.
 
-#### 6. Gọi `mint` bằng non-owner — bị revert như kỳ vọng
+#### 6. Calling `mint` as non-owner — reverted as expected
 
-Kết nối ví burner (không phải owner) rồi gọi `mint` — giao dịch thất bại trên Etherscan với custom error `OwnableUnauthorizedAccount`:
+Connected the burner wallet (not the owner) and called `mint` — the transaction failed on Etherscan with custom error `OwnableUnauthorizedAccount`:
 
-![Mint bằng non-owner bị revert/Fail](solution_images/5_perform_mint_NonOwner_expectedRevertOrFail.png)
+![Mint as non-owner reverted/failed](solution_images/5_perform_mint_NonOwner_expectedRevertOrFail.png)
 
-→ Chứng minh ngay trên Etherscan rằng chỉ owner mới mint được token.
+→ Directly demonstrated on Etherscan that only the owner can mint tokens.
 
 ---
 
-## 🎯 Kết quả nộp bài
+## 🎯 Submission Results
 
-- Địa chỉ contract: `0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82`
-- Link verified trên Etherscan: [tab Code của contract](https://sepolia.etherscan.io/address/0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82#code)
-- Screenshot verify thành công: mục 3
+- Contract address: `0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82`
+- Verified Etherscan link: [contract Code tab](https://sepolia.etherscan.io/address/0x43F7E84A4785Ae62c4B27dD591725b0C4BfA1B82#code)
+- Screenshot of successful verification: Section 3

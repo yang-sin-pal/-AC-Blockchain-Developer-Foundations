@@ -20,7 +20,7 @@ From repo-root `ac-hardhat-template/` except the last line:
 ```bash
 npx hardhat test                                        # ALL accumulated suites (local network)
 npx hardhat clean && npx hardhat compile                # full rebuild; typechain for every contract
-npx hardhat deploy --network sepolia --tags mytoken     # new MyToken instance each run
+npx hardhat deploy --network sepolia --tags mytoken     # reuse-or-deploy per record state (see Gotchas)
 npx hardhat run scripts/token.ts --network sepolia      # transfer 100 MTK to a random address
 npm run lesson bai6_1                                   # from repo ROOT — reads chain via PublicNode RPC
 ```
@@ -31,5 +31,5 @@ npm run lesson bai6_1                                   # from repo ROOT — rea
 - **Incremental compile ghosts**: deleting a contract leaves empty `artifacts/**/` dirs and orphaned `typechain/*.ts`; deleting `typechain/` alone skips regeneration because `cache/` fingerprints make compile a no-op. Always `npx hardhat clean && npx hardhat compile` after removing contracts/folders by hand
 - Test stack is installed explicitly (config imports plugins individually, no toolbox): chai pinned **v4** (v5 is ESM-only) — see root AGENTS setup for exact install line
 - `scripts/test.ts` sends funds to `ethers.Wallet.createRandom().address` because Sepolia exposes exactly ONE signer (`getSigners()[1]` would be undefined)
-- Redeploys mint fresh instances (`skipIfAlreadyDeployed: false`) and overwrite the shared `deployments/sepolia/MyToken.json` — re-verify after redeploying
+- hardhat-deploy 1.x REUSES unchanged deployments even with `skipIfAlreadyDeployed: false` (prints `reusing "MyToken" at …`) — for a genuinely fresh instance delete `deployments/sepolia/MyToken.json` first; re-verify after any actual redeploy
 - Sepolia RPC is PublicNode (`https://ethereum-sepolia-rpc.publicnode.com`) in both `hardhat.config.ts` and lesson-level `test.ts`

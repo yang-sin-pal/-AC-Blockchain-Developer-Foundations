@@ -1,32 +1,32 @@
-# Bài Tập 7.1 – Mint Token ERC20
+# Exercise 7.1 – Mint ERC20 Token
 
-🎯 Mục tiêu:
-- Viết, deploy và mint token ERC20 bằng Hardhat.
-
----
-
-## ✅ Yêu cầu
-
-1. Viết contract `MyMintableToken`:
-   - Kế thừa ERC20
-   - Hàm `mint(address to, uint amount)` chỉ owner gọi được
-
-2. Viết script deploy:
-   - Deploy contract
-   - Mint 1000 token cho deployer
-   - In balance của deployer
+🎯 Objective:
+- Write, deploy, and mint an ERC20 token using Hardhat.
 
 ---
 
-## 💡 Gợi ý
+## ✅ Requirements
 
-- Kế thừa `Ownable` để dùng `onlyOwner`
-- Hàm `_mint()` thực hiện mint token
-- Hàm `balanceOf()` trả về số dư
+1. Write the `MyMintableToken` contract:
+   - Inherit from ERC20
+   - The `mint(address to, uint amount)` function must be restricted to the owner only
+
+2. Write a deploy script:
+   - Deploy the contract
+   - Mint 1000 tokens to the deployer
+   - Print the deployer's balance
 
 ---
 
-## 🧪 Chạy lệnh
+## 💡 Hints
+
+- Inherit `Ownable` to use the `onlyOwner` modifier
+- The `_mint()` function performs the token minting
+- The `balanceOf()` function returns the balance
+
+---
+
+## 🧪 Run Command
 
 ```bash
 npx hardhat deploy --network sepolia --tags deploy

@@ -1,31 +1,31 @@
-# Bài 3.2 – Báo cáo
+# Lesson 3.2 – Report
 
-#### 1. Viết mã nguồn hợp đồng trên Remix IDE
+#### 1. Write the contract source code on Remix IDE
 ![alt text](solution_images/write_contract.png)
 
-#### 2. Biên dịch hợp đồng
+#### 2. Compile the contract
 ![alt text](solution_images/compile_contract.png)
 
-#### 3. Triển khai hợp đồng
+#### 3. Deploy the contract
 ![alt text](solution_images/deploy_contract.png)
 
-#### 4. Kiểm tra giá trị `minAge` ban đầu (mặc định = 18)
+#### 4. Check the initial `minAge` value (default = 18)
 ![alt text](solution_images/get_minAge_before_change.png)
 
-#### 5. Kiểm tra `checkEligibility(17)` → `false` (nhỏ hơn 18)
+#### 5. Test `checkEligibility(17)` → `false` (less than 18)
 ![alt text](solution_images/test_checkEligibility_17_false.png)
 
-#### 6. Kiểm tra `checkEligibility(18)` → `true` (bằng 18)
+#### 6. Test `checkEligibility(18)` → `true` (equal to 18)
 ![alt text](solution_images/test_checkEligibility_18_true.png)
 
-#### 7. Kiểm tra `checkEligibility(19)` → `true` (lớn hơn 18)
+#### 7. Test `checkEligibility(19)` → `true` (greater than 18)
 ![alt text](solution_images/test_checkEligibility_19_true.png)
 
-#### 8. Cập nhật `minAge` thành 20 bằng `updateMinAge(20)`
+#### 8. Update `minAge` to 20 using `updateMinAge(20)`
 ![alt text](solution_images/test_updateMinAge_to_20.png)
 
-#### 9. Xác nhận `minAge` đã được cập nhật thành 20
+#### 9. Confirm `minAge` has been updated to 20
 ![alt text](solution_images/get_minAge_after_change.png)
 
-#### 10. Kiểm tra ràng buộc owner: gọi `updateMinAge` bằng tài khoản không phải owner → revert
+#### 10. Test the owner constraint: call `updateMinAge` from a non-owner account → revert
 ![alt text](solution_images/test_updateMinAge_with_nonOwner.png)

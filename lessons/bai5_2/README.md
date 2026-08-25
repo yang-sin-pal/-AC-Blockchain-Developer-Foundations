@@ -1,34 +1,34 @@
-# Bài Tập 5.2 – Gửi Transaction dùng Ethers.js + Hardhat
+# Exercise 5.2 – Sending Transactions with Ethers.js + Hardhat
 
-🎯 Mục tiêu:
+🎯 Objectives:
 
-- Deploy một smart contract đơn giản bằng Hardhat.
-- Gọi hàm `increment()` từ contract bằng Ethers.js.
-- In kết quả của `getCount()` ra console.
-
----
-
-## ✅ Yêu cầu
-
-1. Sử dụng ac-hardhat-template: https://github.com/appscyclone/ac-hardhat-template
-2. Đọc hiểu
-
-   - Script deploy contract deploy/1-deploy.ts
-   - Script tương tác Counter contract scripts/test.ts
-   - Unit test script test/Counter.test.ts
+- Deploy a simple smart contract using Hardhat.
+- Call the `increment()` function on the contract using Ethers.js.
+- Print the result of `getCount()` to the console.
 
 ---
 
-## 🧪 Kiểm tra
+## ✅ Requirements
 
-Chạy:
+1. Use ac-hardhat-template: https://github.com/appscyclone/ac-hardhat-template
+2. Study and understand the following:
+
+   - Contract deploy script: deploy/1-deploy.ts
+   - Counter contract interaction script: scripts/test.ts
+   - Unit test script: test/Counter.test.ts
+
+---
+
+## 🧪 Testing
+
+Run:
 
 ```bash
-npx hardhat test # chạy unit test trước khi deploy (lưu ý: KHÔNG phải "npx hardhat run test")
-npx hardhat deploy --network sepolia --tags deploy # deploy lên sepolia network
+npx hardhat test # run unit tests before deploying (note: NOT "npx hardhat run test")
+npx hardhat deploy --network sepolia --tags deploy # deploy to the Sepolia network
 npx hardhat run scripts/test.ts --network sepolia
 ```
 
-Kết quả:
+Expected result:
 
-- Hiện ra số `1` nếu gọi thành công `increment()` một lần.
+- The number `1` is displayed if `increment()` is called successfully once.

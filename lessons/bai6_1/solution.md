@@ -1,6 +1,6 @@
-# Bài 6.1 – Báo cáo
+# Lesson 6.1 – Report
 
-#### 1. Viết contract `MyToken.sol` — ERC20 kế thừa OpenZeppelin, tên "MyToken", symbol "MTK", mint toàn bộ 1,000,000 token cho deployer trong constructor
+#### 1. Write the `MyToken.sol` contract — ERC20 inheriting from OpenZeppelin, name "MyToken", symbol "MTK", mint the full 1,000,000 tokens to the deployer in the constructor
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -15,20 +15,20 @@ contract MyToken is ERC20 {
 }
 ```
 
-#### 2. Viết script deploy và triển khai lên Sepolia bằng hardhat-deploy
+#### 2. Write the deploy script and deploy to Sepolia using hardhat-deploy
 
-Chạy lệnh `npx hardhat deploy --network sepolia --tags deploy` — script in tên network, địa chỉ contract và transaction:
+Run the command `npx hardhat deploy --network sepolia --tags deploy` — the script prints the network name, contract address, and transaction:
 
-![Deploy MyToken contract lên Sepolia](solution_images/1_deploy_MyToken_contract_sepolia.png)
+![Deploying MyToken contract to Sepolia](solution_images/1_deploy_MyToken_contract_sepolia.png)
 
-- Địa chỉ contract: [`0x82AAcD5Be037A483Fc3E0cC5f2B65747A18Ab595`](https://sepolia.etherscan.io/address/0x82AAcD5Be037A483Fc3E0cC5f2B65747A18Ab595)
-- Đã verify source code trên **Etherscan** (Standard JSON Input)
+- Contract address: [`0x82AAcD5Be037A483Fc3E0cC5f2B65747A18Ab595`](https://sepolia.etherscan.io/address/0x82AAcD5Be037A483Fc3E0cC5f2B65747A18Ab595)
+- Source code verified on **Etherscan** (Standard JSON Input)
 
-#### 3. Chạy `test.ts` kiểm tra balance của deployer qua RPC PublicNode
+#### 3. Run `test.ts` to check the deployer's balance via RPC PublicNode
 
-File test đọc `name` / `symbol` / `decimals` / `balanceOf(deployer)` qua ABI ERC20 với ethers v6, chạy bằng `npm run lesson bai6_1`:
+The test file reads `name` / `symbol` / `decimals` / `balanceOf(deployer)` through the ERC20 ABI using ethers v6, and is executed via `npm run lesson bai6_1`:
 
-![Kết quả npm run lesson bai6_1](solution_images/2_npm_run_lesson_bai6_1.png)
+![Result of npm run lesson bai6_1](solution_images/2_npm_run_lesson_bai6_1.png)
 
-- Kết quả: `MyToken (MTK), decimals: 18`
-- Balance của deployer: `999800.0 MTK` = 1,000,000 ban đầu trừ 2 giao dịch transfer thử nghiệm 100 MTK mỗi giao dịch
+- Result: `MyToken (MTK), decimals: 18`
+- Deployer balance: `999800.0 MTK` = 1,000,000 initial minus 2 test transfer transactions of 100 MTK each

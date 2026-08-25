@@ -1,19 +1,19 @@
-# 🧪 Bài tập TypeScript – Mô phỏng Smart Contract
+# 🧪 TypeScript Exercise – Smart Contract Simulation
 
-Trong bài học, bạn đã biết smart contract có thể lưu trữ và cập nhật dữ liệu.  
-Giờ bạn sẽ mô phỏng lại điều đó bằng TypeScript.
-
----
-
-## 🎯 Yêu cầu:
-1. Tạo một lớp `SmartContract` có thuộc tính `message` dạng `string`.
-2. Constructor khởi tạo `message`.
-3. Hàm `updateMessage(newMsg: string)` sẽ cập nhật `message` mới.
-4. Hàm `getMessage()` trả về message hiện tại.
+In the lesson, you learned that smart contracts can store and update data.
+Now you will replicate that behavior in TypeScript.
 
 ---
 
-## 🧪 Ví dụ:
+## 🎯 Requirements:
+1. Create a `SmartContract` class with a `message` property of type `string`.
+2. A constructor that initializes `message`.
+3. An `updateMessage(newMsg: string)` function that updates the `message`.
+4. A `getMessage()` function that returns the current message.
+
+---
+
+## 🧪 Example:
 
 ```ts
 const contract = new SmartContract("Hello");
@@ -25,11 +25,11 @@ console.log(contract.getMessage()); // 👉 "Blockchain!"
 
 ---
 
-## 🧠 Gợi ý:
-- Giống như smart contract HelloWorld trong Solidity.
-- Bạn không cần thao tác file, chỉ làm việc trong class.
+## 🧠 Hints:
+- Similar to the HelloWorld smart contract in Solidity.
+- You don't need file operations — just work within a class.
 
 ---
 
-## 📝 Lưu ý:
-- Đây là bài tập optional, nhưng rất nên làm nếu bạn muốn hiểu rõ state và hàm trong smart contract.
+## 📝 Notes:
+- This is an optional exercise, but highly recommended if you want to understand state and functions in a smart contract.

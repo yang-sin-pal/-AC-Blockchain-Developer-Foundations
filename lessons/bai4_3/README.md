@@ -1,22 +1,22 @@
-# Bài 4.3 – Voting Smart Contract
+# Lesson 4.3 – Voting Smart Contract
 
-## 🎯 Mục tiêu
-- Thực hành làm bài tập tổng hợp tuần 4.
-- Kết hợp struct, mapping, modifier, event để xây dựng voting contract.
+## 🎯 Objectives
+- Practice the comprehensive week 4 assignment.
+- Combine struct, mapping, modifier, and event to build a voting contract.
 
-## 📄 Đề bài
-Viết một smart contract `Voting`:
-- Admin (owner) tạo danh sách ứng viên.
-- Người dùng chỉ được vote 1 lần cho 1 ứng viên.
-- Ghi log mỗi lần vote thành công bằng event.
+## 📄 Problem
+Write a smart contract `Voting`:
+- The admin (owner) creates a list of candidates.
+- Each user may only vote once for one candidate.
+- Log each successful vote with an event.
 
-### Yêu cầu:
-1️⃣ Struct `Candidate` gồm `name (string)`, `voteCount (uint)`  
+### Requirements:
+1️⃣ Struct `Candidate` containing `name (string)`, `voteCount (uint)`  
 2️⃣ Mapping `candidates(uint => Candidate)`  
 3️⃣ Mapping `hasVoted(address => bool)`  
-4️⃣ Modifier `onlyOwner` để kiểm soát việc tạo ứng viên  
+4️⃣ Modifier `onlyOwner` to control candidate creation  
 5️⃣ Event `Voted(address voter, uint candidateId)`
 
-## 💻 Cách chạy
-- Dán code vào Remix IDE: https://remix.ethereum.org
-- Deploy → Thêm ứng viên → Thực hiện vote → Kiểm tra event log và kết quả đếm phiếu.
+## 💻 How to Run
+- Paste the code into Remix IDE: https://remix.ethereum.org
+- Deploy → Add candidates → Cast votes → Check the event log and vote count results.

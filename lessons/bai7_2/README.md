@@ -1,12 +1,12 @@
-# Bài Tập 7.2 – Verify MyMintableToken trên Etherscan
+# Exercise 7.2 – Verify MyMintableToken on Etherscan
 
-🎯 Mục tiêu:
-- Deploy contract ERC20 `MyMintableToken` trên Sepolia
-- Verify contract trên Etherscan
+🎯 Objective:
+- Deploy the `MyMintableToken` ERC20 contract on Sepolia
+- Verify the contract on Etherscan
 
 ---
 
-## ✅ Bước 1 – Cài plugin verify
+## ✅ Step 1 – Install the verify plugin
 
 ```bash
 npm install --save-dev @nomicfoundation/hardhat-verify
@@ -14,7 +14,7 @@ npm install --save-dev @nomicfoundation/hardhat-verify
 
 ---
 
-## ✅ Bước 2 – Thêm cấu hình vào `hardhat.config.ts`
+## ✅ Step 2 – Add configuration to `hardhat.config.ts`
 
 ```ts
 import "@nomicfoundation/hardhat-verify";
@@ -32,21 +32,21 @@ module.exports = {
 }
 ```
 
-⚠️ **Không commit private key**
+⚠️ **Do not commit your private key**
 
 ---
 
-## ✅ Bước 3 – Deploy contract
+## ✅ Step 3 – Deploy the contract
 
 ```bash
 npx hardhat run scripts/deploy.ts --network sepolia
 ```
 
-Lưu lại địa chỉ contract.
+Save the contract address.
 
 ---
 
-## ✅ Bước 4 – Verify contract
+## ✅ Step 4 – Verify the contract
 
 ```bash
 npx hardhat verify --network sepolia DEPLOYED_CONTRACT_ADDRESS
@@ -54,18 +54,17 @@ npx hardhat verify --network sepolia DEPLOYED_CONTRACT_ADDRESS
 
 ---
 
-## ✅ Bước 5 – Kiểm tra trên Etherscan
+## ✅ Step 5 – Check on Etherscan
 
-- Source code sẽ hiển thị công khai.
-- Kiểm tra tab Read/Write Contract.
-
----
-
-## 🎯 Yêu cầu nộp bài
-
-- Địa chỉ contract
-- Link verify trên Etherscan
-- Screenshot verify thành công
+- The source code will be displayed publicly.
+- Check the Read/Write Contract tabs.
 
 ---
 
+## 🎯 Submission Requirements
+
+- Contract address
+- Etherscan verification link
+- Screenshot of successful verification
+
+---
