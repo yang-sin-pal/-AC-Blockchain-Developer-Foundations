@@ -29,7 +29,7 @@ npx ts-node run.ts bai1_1
 | Script + report | bai5_3 | `README.md` spec; turn the stub `test.ts` into a working ethers v6 script against an already-deployed contract (reuses bai5_2's Counter); finish with a `solution.md` report |
 | Hardhat | bai5_2, bai6_1, bai6_3, bai7_1, bai7_2 | stub `test.ts`; all work happens in the shared repo-root `ac-hardhat-template/` |
 
-One **shared** template lives at repo-root `ac-hardhat-template/` (already installed: node_modules present, funded `.env` ready) — never clone or copy it per lesson. Each Hardhat lesson just adds its payload files there; see `lessons/bai5_2/AGENTS.md`, `lessons/bai6_1/AGENTS.md`, `lessons/bai6_3/AGENTS.md` and `lessons/bai7_1/AGENTS.md` for lesson specifics.
+One **shared** template lives at repo-root `ac-hardhat-template/` (already installed: node_modules present, funded `.env` ready) — never clone or copy it per lesson. Each Hardhat lesson just adds its payload files there; see `lessons/bai5_2/AGENTS.md`, `lessons/bai6_1/AGENTS.md`, `lessons/bai6_3/AGENTS.md`, `lessons/bai7_1/AGENTS.md` and `lessons/bai7_2/AGENTS.md` for lesson specifics.
 
 ## Dependencies
 

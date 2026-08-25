@@ -37,10 +37,10 @@ Script mint thêm 100 MMT cho deployer rồi in số dư trước/sau. Chạy `n
 
 #### 4. Chạy lại script bằng một tài khoản không phải owner
 
-Tạo ví burner, nạp Sepolia ETH từ faucet trước, rồi chạy script trong một cửa sổ PowerShell với biến môi trường phiên (ghi đè `.env`, không cần sửa file nào):
+Dùng account khác trong Metamase, nạp Sepolia ETH từ faucet trước, rồi chạy script trong một cửa sổ PowerShell với biến môi trường phiên (ghi đè `.env`, không cần sửa file nào):
 
 ```powershell
-$env:TESTNET_PRIVATE_KEY = "<burner private key>"
+$env:TESTNET_PRIVATE_KEY = "<Account2 private key>"
 npx hardhat run scripts/mmt.ts --network sepolia
 ```
 
